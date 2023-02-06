@@ -6,14 +6,14 @@ public class Table {
         String username = "root";
         String password = "root";
 
-        Connection con = null;
+        Connection con;
         try {
 
             Class.forName("java.sql.Driver");
 
             con = DriverManager.getConnection(url, username, password);
             Statement stmt = con.createStatement();
-            String sql = "INSERT INTO employee (empName,empSalary) VALUES ('Shivam',9999954)";
+            String sql = "INSERT INTO employee (empName,empSalary) VALUES ('Sourav',9999954)";
             int x=stmt.executeUpdate(sql);
 
             con.close();

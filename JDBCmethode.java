@@ -3,7 +3,7 @@ import java.sql.*;
 public class JDBCmethode {
     public static void main(String[] args) {
 
-        String url = "jdbc:mysql://localhost:3306/Java";
+        String url = "jdbc:mysql://localhost:3306/company";
         String username = "root";
         String password = "root";
 
@@ -20,7 +20,7 @@ public class JDBCmethode {
             Statement stmt = con.createStatement();
 
 
-            int rowsUpdated = stmt.executeUpdate("UPDATE employee SET empName = 'Shivam' WHERE empId = '1222'");
+            int rowsUpdated = stmt.executeUpdate("UPDATE employee SET empName = 'Shivam' WHERE empId = '2'");
 
 
             System.out.println(rowsUpdated + " rows updated");
@@ -28,7 +28,7 @@ public class JDBCmethode {
 
 //            DELETE
 
-            String deleteSql = "DELETE FROM employee WHERE empId = 365";
+            String deleteSql = "DELETE FROM employee WHERE empId = 3";
 
             try (Connection connection = DriverManager.getConnection(url, username, password);
                  Statement statement = connection.createStatement()) {
@@ -42,7 +42,7 @@ public class JDBCmethode {
 
 //            Search
 
-            String selectSQL = "SELECT * FROM employee WHERE empId = 1222";
+            String selectSQL = "SELECT * FROM employee WHERE empId = 4";
             try (Connection conn = DriverManager.getConnection(url, username, password);
                  Statement stm = con.createStatement();
 
