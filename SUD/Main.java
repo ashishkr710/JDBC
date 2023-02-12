@@ -70,8 +70,9 @@ public class Main {
                 stmt.setString(1, ep.getEmpName());
                 stmt.setInt(2,ep.getEmpSalary());
                 stmt.setInt(3,ep.getEmpId());
-                stmt.executeUpdate();
+                int RowEffected = stmt.executeUpdate();
                 System.out.println(ep);
+                System.out.println(RowEffected + " rows updated");
                 con.close();
             }
             case 4 ->{
@@ -83,8 +84,9 @@ public class Main {
                     String q = "DELETE FROM employee WHERE empId=?";
                     PreparedStatement stmt = con.prepareStatement(q);
                     stmt.setInt(1, ep.getEmpId());
-                    stmt.executeUpdate();
+                    int RowEffected = stmt.executeUpdate();
                     System.out.println(ep);
+                    System.out.println(RowEffected + " rows Deleted");
                     con.close();
             }
         }
