@@ -19,18 +19,18 @@ public class Main {
         switch (choice) {
             case 1 ->{
                 //Search Employee
-                     System.out.println("Search");
-                    System.out.print("Enter Employee Id = ");
-                    int empId =Integer.parseInt(br.readLine());
-                    Employee ep = new Employee(empId);
-                    Connection con = Connect();
-                    String q = "SELECT * FROM employee  WHERE empId="+empId;
-                    Statement stmt = con.createStatement();
-                    ResultSet set = stmt.executeQuery(q);
-                    set.next();
-                    int id = set.getInt(1);
-                    String name = set.getString(2);
-                    int Salary = set.getInt(3);
+                System.out.println("Search");
+                System.out.print("Enter Employee Id = ");
+                int empId =Integer.parseInt(br.readLine());
+                Employee ep = new Employee(empId);
+                Connection con = Connect();
+                String q = "SELECT * FROM employee  WHERE empId="+empId;
+                Statement stmt = con.createStatement();
+                ResultSet set = stmt.executeQuery(q);
+                set.next();
+                int id = set.getInt(1);
+                String name = set.getString(2);
+                int Salary = set.getInt(3);
 
                 System.out.println("ID: "+id);
                 System.out.println("name: "+name);
@@ -56,7 +56,7 @@ public class Main {
             }
             case 3 ->{
                 // Update Employee
-                    System.out.println("Update");
+                System.out.println("Update");
                 System.out.print("Enter Employee Id to Update : ");
                 int empId =Integer.parseInt(br.readLine());
                 System.out.print("Enter Updated Employee Name : ");
@@ -65,7 +65,6 @@ public class Main {
                 int empSalary = Integer.parseInt(br.readLine());
                 Employee ep = new Employee(empId,empName,empSalary);
                 Connection con = Connect();
-//                String q = "update employee set (empName,empSalary) VALUES (?,?) where empId=?";
                 String q = "update employee set empName = ?, empSalary = ? where empId = ?";
                 PreparedStatement stmt = con.prepareStatement(q);
                 stmt.setString(1, ep.getEmpName());
@@ -88,62 +87,45 @@ public class Main {
                     System.out.println(ep);
                     con.close();
             }
-
-
-
         }
-
     }
-
     public static class Employee{
-
     private int empId;
     private String empName;
     private int empSalary;
-
-        public Employee(int empId, String empName, int empSalary) {
+    public Employee(int empId, String empName, int empSalary) {
             this.empId = empId;
             this.empName = empName;
             this.empSalary = empSalary;
-        }
-
-        public Employee(String empName, int empSalary) {
+    }
+    public Employee(String empName, int empSalary) {
             this.empName = empName;
             this.empSalary = empSalary;
-        }
-
+    }
         public Employee() {
             super();
         }
-
         public Employee(int empId) {
             this.empId = empId;
         }
-
         public int getEmpId() {
             return empId;
         }
-
         public void setEmpId(int empId) {
             this.empId = empId;
         }
-
         public String getEmpName() {
             return empName;
         }
-
         public void setEmpName(String empName) {
             this.empName = empName;
         }
-
         public int getEmpSalary() {
             return empSalary;
         }
-
         public void setEmpSalary(int empSalary) {
             this.empSalary = empSalary;
         }
-
         @Override
         public String toString() {
             return "Employee[" +
@@ -152,14 +134,10 @@ public class Main {
                     ", empSalary=" + empSalary +
                     ']';
         }
-
     }
-
     public static Connection Connect(){
-
         Connection con;
         try {
-
             Class.forName("java.sql.Driver");
 
             String url = "jdbc:mysql://localhost:3306/company";
@@ -167,13 +145,9 @@ public class Main {
             String password = "root";
 
             con = DriverManager.getConnection(url, username, password);
-
-
             Statement stmt = con.createStatement();} catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
-
         return con;
     }
-
 }
