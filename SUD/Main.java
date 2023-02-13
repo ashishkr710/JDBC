@@ -42,7 +42,7 @@ public class Main {
                 System.out.println("ADD");
                 System.out.print("Enter Employee Name = ");
                 String name = br.readLine();
-                System.out.println("Enter Employee Salary");
+                System.out.print("Enter Employee Salary = ");
                 int Salary = Integer.parseInt(br.readLine());
                 Employee ep = new Employee(name, Salary);
                 Connection con = Connect();
@@ -77,7 +77,7 @@ public class Main {
             }
             case 4 ->{
                 // Delete Employee
-                    System.out.println("Enter Employee Id to Delete");
+                    System.out.print("Enter Employee Id to Delete =");
                     int empId =Integer.parseInt(br.readLine());
                     Employee ep = new Employee(empId);
                     Connection con = Connect();
