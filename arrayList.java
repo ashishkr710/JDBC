@@ -1,13 +1,10 @@
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 
     public class arrayList {
         public static void main(String[] args) {
-            ArrayList<Employee> Employee = new ArrayList<>();
+//            ArrayList<Employee> Employee = new ArrayList<>();
+            ArrayList<Employee> EL = new ArrayList<>();
             Connection connection = null;
             Statement statement = null;
             ResultSet resultSet = null;
@@ -27,12 +24,16 @@ import java.util.ArrayList;
                 resultSet = statement.executeQuery("SELECT * FROM employee");
 
                 while (resultSet.next()) {
-//                    Employee.add(resultSet.getString("empName"));;
+                    Employee employee = new Employee();
                     int id = resultSet.getInt("empId");
                     String name = resultSet.getString("empName");
                     int salary = resultSet.getInt("empSalary");
                     // Add the employee object to the ArrayList
-                    Employee.add(new Employee(id,name,salary));
+//                    Employee.add(new Employee(id,name,salary));
+//                    employee.getEmpId();
+//                    employee.getEmpId();
+                    Employee.add
+
                 }
 
             } catch (SQLException | ClassNotFoundException e) {
@@ -53,8 +54,8 @@ import java.util.ArrayList;
                 }
             }
 
-            for (arrayList.Employee name : Employee) {
-                System.out.println(name);}
+            for (arrayList.Employee employee :EL) {
+                System.out.println(employee);}
         }
         public static class Employee{
             private int empId;
